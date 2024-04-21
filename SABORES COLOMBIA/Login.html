@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+    </style>
+    <link rel="stylesheet" href="estilos.css">
+    <title>Inicio de Sesión</title>
+</head>
+
+<body>
+    <header class="loginHeader">
+        <h1><img src="imagenes/Saborescolombia.png" alt="logo de SaboresColombia"></h1>
+        <div class="cajaHeader">
+            <nav>
+                <ul>
+                    <li><a href="pantallaInicio.html">Inicio</a></li>
+                    <li><a href="index.html">INGREDIENTES</a></li>
+                    <li><a href="recetasInternacionales.html">RECETAS INTERNACIONALES</a></li>
+                    <li><a href="foro.html">FORO</a></li>
+                    <li><a href="login.html" class = "btn-1">LOGIN</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="loginTodo">
+        <div class="container-form register">
+            <div class="information">
+                <div class="info-childs">
+                    <h2>Bienvenido</h2>
+                    <p>Ingrese su correo y contraseña para continuar viendo el contenido.</p>
+                    <input type="button" value="Iniciar Sesión" id="sign-in">
+                </div>
+            </div>
+            <div class="form-information">
+                <div class="form-information-childs">
+                    <h2>Crear una cuenta</h2>
+                    <div class="icons">
+                        <i class='bx bxl-google'></i>
+                        <i class='bx bxl-facebook-circle'></i>
+                        <i class='bx bxl-linkedin'></i>
+                    </div>
+                    <p>O usa tu email para registrarte</p>
+                    <form class="form">
+                        <label>
+                            <i class='bx bxs-user'></i>
+                            <input type="text" placeholder="Nombres Completos">
+                        </label>
+                        <label>
+                            <i class='bx bxs-envelope'></i>
+                            <input type="email" placeholder="Correo Electronico">
+                        </label>
+                        <label>
+                            <i class='bx bxs-lock-alt'></i>
+                            <input type="password" placeholder="Contraseña">
+                        </label>
+                        <input type="submit" value="Registrarte">
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <div class="container-form login hide">
+            <div class="information">
+                <div class="info-childs">
+                    <h2>¡¡Bienvenido Nuevamente!!</h2>
+                    <p>Si aun no tienes una cuenta por favor registrate aquí.</p>
+                    <input type="button" value="Registrarse" id="sign-up">
+                </div>
+            </div>
+            <div class="form-information">
+                <div class="form-information-childs">
+                    <h2>Iniciar Sesión</h2>
+                    <div class="icons">
+                        <i class='bx bxl-google'></i>
+                        <i class='bx bxl-github'></i>
+                        <i class='bx bxl-linkedin'></i>
+                    </div>
+                    <p>O Iniciar Sesión con una cuenta</p>
+                    <form class="form">
+                        <label>
+                            <i class='bx bxs-envelope'></i>
+                            <input type="email" placeholder="Correo Electronico">
+                        </label>
+                        <label>
+                            <i class='bx bxs-lock-alt'></i>
+                            <input type="password" placeholder="Contraseña">
+                        </label>
+                        <input type="submit" value="Iniciar Sesión">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="login.js"></script>
+</body>
+
+</html>
