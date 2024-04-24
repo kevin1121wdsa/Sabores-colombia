@@ -315,8 +315,6 @@ h2{
     font-size: 33px;
 }
 
-
-
 /*CSS PARA EL FORO*/
 .foro{
     margin-top: 630px;
@@ -729,7 +727,6 @@ h1 {
 }
 
 
-
 .receta {
     width: 300px;
     padding: 20px;
@@ -764,7 +761,6 @@ h1 {
     margin: 10px auto 30px auto; /* Ajusta el margen (top, right, bottom, left) */
     text-align: center;
 }
-
 
 /*responsive form*/
 

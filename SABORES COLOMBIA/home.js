@@ -17,3 +17,7 @@ listaProductos.forEach(function(item) {
         this.style.backgroundColor = 'transparent';
     });
 });
+
+function irARecetas() {
+    window.location.href = "recetas.html";
+}
