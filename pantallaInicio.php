@@ -132,7 +132,7 @@
     <div class="footerContainer">
       <div class="socialIcons">
         <a href=""><i class="fa-brands fa-facebook"></i></a>
-        <a href="https://api.twitter.com/oauth/authorize?oauth_token=CvrMjAAAAAABtiQDAAABjyMFA10"><i class="fa-brands fa-twitter"></i></a>
+        <a href="https://api.twitter.com/oauth/authorize?oauth_token=u_Ra8AAAAAABtiQDAAABjyMxRcU"><i class="fa-brands fa-twitter"></i></a>
         <a href="https://accounts.google.com/o/oauth2/v2/auth?response_type=code&access_type=online&client_id=947201008132-9pp3222nmje6tp4bhqgqr4v09bt4bsl1.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Flogin-register%2Flogin-register%2FSABORES%2520COLOMBIA%2FpantallaInicio.php&state&scope=email%20profile&approval_prompt=auto"><i class="fa-brands fa-google"></i></a>      
       
       </div>
