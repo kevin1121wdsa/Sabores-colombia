@@ -1,5 +1,12 @@
 {
     "require": {
-        "google/apiclient": "^2.0"
+        "google/apiclient": "^2.0",
+        "hybridauth/hybridauth": "^3.11",
+        "jublonet/codebird-php": "^3.1"
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true
+        }
     }
 }
