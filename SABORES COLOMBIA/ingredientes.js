@@ -11,6 +11,7 @@ function selectIngredient(element, ingredientName) {
     }
     localStorage.setItem('selectedIngredients', JSON.stringify(selectedIngredients));
     mostrarRecetas();
+    console.log(selectedIngredients);
 }
 
 function cargarIngredientesSeleccionados() {
@@ -21,12 +22,16 @@ function cargarIngredientesSeleccionados() {
     }
     document.querySelectorAll('.recetas li').forEach(function(receta) {
         receta.style.display = 'none';
+        
     });
+    console.log(selectedIngredients);
 }
 
 cargarIngredientesSeleccionados();
+console.log(selectedIngredients);
 
 function mostrarRecetas() {
+    console.log(selectedIngredients)
     const arrozConPollo = document.getElementById('arrozConPollo');
     const bandejaPaisa = document.getElementById('bandejaPaisa');
     const changua = document.getElementById('changua')
@@ -41,32 +46,32 @@ function mostrarRecetas() {
     const arepaDeQueso = document.getElementById('arepaDeQueso');
     const salchipapa = document.getElementById('salchipapa');
 
-    if (selectedIngredients.includes('pechuga') && selectedIngredients.includes('arroz')) {
+    if (selectedIngredients.includes('pechuga') && selectedIngredients.includes('arroz') && selectedIngredients.includes('cebolla') && selectedIngredients.includes('tomate')){
         arrozConPollo.style.display = 'inline-block';
     } else {
         arrozConPollo.style.display = 'none';
     }
-    if(selectedIngredients.includes('chicharron') && selectedIngredients.includes('huevo')){
+    if(selectedIngredients.includes('chicharron') && selectedIngredients.includes('huevo') && selectedIngredients.includes('carne') && selectedIngredients.includes('frijoles') && selectedIngredients.includes('aguacate') && selectedIngredients.includes('platano')){
         bandejaPaisa.style.display = 'inline-block';
     } else {
         bandejaPaisa.style.display = 'none';
     }
-    if(selectedIngredients.includes('huevo') && selectedIngredients.includes('leche')){
+    if(selectedIngredients.includes('huevo') && selectedIngredients.includes('leche') && selectedIngredients.includes('cebollaLarga')){
         changua.style.display = 'inline-block';
     } else{
         changua.style.display = 'none';
     }
-    if(selectedIngredients.includes('harina') && selectedIngredients.includes('carne')){
+    if(selectedIngredients.includes('harina') && selectedIngredients.includes('carne') && selectedIngredients.includes('papas')){
         empanada.style.display = 'inline-block';
     } else{
         empanada.style.display = 'none';
     }
-    if(selectedIngredients.includes('almidonYuca') && selectedIngredients.includes('leche')){
+    if(selectedIngredients.includes('almidonYuca') && selectedIngredients.includes('leche') && selectedIngredients.includes('queso') && selectedIngredients.includes('huevo')){
         pandebono.style.display = 'inline-block';
     } else{
         pandebono.style.display = 'none';
     }
-    if(selectedIngredients.includes('carne') && selectedIngredients.includes('yuca')){
+    if(selectedIngredients.includes('carne') && selectedIngredients.includes('yuca') && selectedIngredients.includes('platano') && selectedIngredients.includes('papa') && selectedIngredients.includes('cebolla')){
         sancocho.style.display = 'inline-block';
     } else{
         sancocho.style.display = 'none';
@@ -76,22 +81,22 @@ function mostrarRecetas() {
     } else{
         arepaDeHuevo.style.display = 'none';
     }
-    if(selectedIngredients.includes('pechuga') && selectedIngredients.includes('papas')){
+    if(selectedIngredients.includes('pechuga') && selectedIngredients.includes('papas') && selectedIngredients.includes('mazorca')){
         ajiaco.style.display = 'inline-block';
     } else{
         ajiaco.style.display = 'none';
     }
-    if(selectedIngredients.includes('papas') && selectedIngredients.includes('carne')){
+    if(selectedIngredients.includes('papas') && selectedIngredients.includes('carne') && selectedIngredients.includes('cebolla') && selectedIngredients.includes('huevo') && selectedIngredients.includes('harina')){
         papaRellena.style.display = 'inline-block';
     } else{
         papaRellena.style.display = 'none';
     }
-    if(selectedIngredients.includes('huevo') && selectedIngredients.includes('tomate')){
+    if(selectedIngredients.includes('huevo') && selectedIngredients.includes('tomate') && selectedIngredients.includes('cebolla')){
         huevoPerico.style.display = 'inline-block';
     } else{
         huevoPerico.style.display = 'none';
     }
-    if(selectedIngredients.includes('pechuga') && selectedIngredients.includes('carne')){
+    if(selectedIngredients.includes('pechuga') && selectedIngredients.includes('carne') && selectedIngredients.includes('harina') && selectedIngredients.includes('huevo')){ 
         tamales.style.display = 'inline-block';
     } else{
         tamales.style.display = 'none';
@@ -108,7 +113,6 @@ function mostrarRecetas() {
     }
 }
 
-// Adjuntar evento a los enlaces para limpiar el almacenamiento local antes de seguir el enlace
 document.querySelectorAll('a').forEach(function(enlace) {
     enlace.addEventListener('click', function() {
         localStorage.removeItem('selectedIngredients');

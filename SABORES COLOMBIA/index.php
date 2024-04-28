@@ -166,8 +166,7 @@
             </li>
         </ul>
         
-
-        <a href="recetas.html" class="btnSiguiente">Siguiente</a>
+        <button onclick="window.location.href = 'recetas.php';"  class="btnSiguiente">Siguiente</button>
     </main>
     <script src="home.js"></script>
     <script src="ingredientes.js"></script>
