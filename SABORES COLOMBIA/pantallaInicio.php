@@ -11,6 +11,7 @@
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="estilos.css">
+
 </head>
 
 <body>
@@ -24,11 +25,25 @@
           <li><a href="recetasInternacionales.php">RECETAS INTERNACIONALES</a></li>
           <li><a href="../CAJA COMENTARIOS/index2.php">Foro</a></li>
           <li><a href="../index.php" class="btn-1">LOGIN</a></li>
-          <li><a href ="../bienvenida.php">Cerrar sesión</a><li>
+          <li><a href ="..//bienvenida.php">Cerrar sesión</a><li>
         </ul>
       </nav>
     </div>
+    
+    <?php
+            if(isset($_SESSION['access_token'])) {
+              echo '<img class="foto_usuario"  src="' . $_SESSION["user_image"] . '" alt="Foto de perfil">';
+              echo '<a href="#" class="user-name">' . $_SESSION['user_first_name'] . '</a>';
+            } else {
+              echo '<img class= "foto_ususario" src="imagenes/usuario.png" alt="Imagen">';
+              echo '<a class="user-name"  href="#">Usuario</a>';
+            }
+          ?>
+
   </header>
+
+
+
 
   <main class="todoInicio">
     <h1 class="titulo2">BIENVENIDOS A SABORES COLOMBIA</h1>
@@ -117,10 +132,9 @@
     <div class="footerContainer">
       <div class="socialIcons">
         <a href=""><i class="fa-brands fa-facebook"></i></a>
-        <a href=""><i class="fa-brands fa-instagram"></i></a>
-        <a href=""><i class="fa-brands fa-twitter"></i></a>
-        <a href=""><i class="fa-brands fa-google-plus"></i></a>
-        <a href=""><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://api.twitter.com/oauth/authorize?oauth_token=u_Ra8AAAAAABtiQDAAABjyMxRcU"><i class="fa-brands fa-twitter"></i></a>
+        <a href="https://accounts.google.com/o/oauth2/v2/auth?response_type=code&access_type=online&client_id=947201008132-9pp3222nmje6tp4bhqgqr4v09bt4bsl1.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Flogin-register%2Flogin-register%2FSABORES%2520COLOMBIA%2FpantallaInicio.php&state&scope=email%20profile&approval_prompt=auto"><i class="fa-brands fa-google"></i></a>      
+      
       </div>
     </div> 
     
@@ -141,9 +155,13 @@
     </div>
     
     </footer>
+
+    
   <script src="firebase.js"></script>
   <script src="home.js"></script>
   
 </body>
 
 </html>
+
+
