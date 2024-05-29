@@ -1,56 +1,77 @@
 <?php
-    session_start();
-    if(isset($_SESSION['usuario'])){
-        header("Location: ../SABORES COLOMBIA/pantallainicio.php");
-    }
+//initialize facebook sdk
+require 'vendor/autoload.php';
+session_start();
+$fb = new Facebook\Facebook([
+'app_id' => '436253329036925', // your app id
+'app_secret' => 'cc8dddb289dbdca5e6cb04565365329a', // your app secret
+'default_graph_version' => 'v2.5',
+]);
+$helper = $fb->getRedirectLoginHelper();
+$permissions = ['email']; // optional
+try {
+if (isset($_SESSION['facebook_access_token'])) {
+$accessToken = $_SESSION['facebook_access_token'];
+} else {
+$accessToken = $helper->getAccessToken();
+}
+} catch(Facebook\Exceptions\facebookResponseException $e) {
+// When Graph returns an error
+echo 'Graph returned an error: ' . $e->getMessage();
+exit;
+} catch(Facebook\Exceptions\FacebookSDKException $e) {
+// When validation fails or other local issues
+echo 'Facebook SDK returned an error: ' . $e->getMessage();
+exit;
+}
+if (isset($accessToken)) {
+if (isset($_SESSION['facebook_access_token'])) {
+$fb->setDefaultAccessToken($_SESSION['facebook_access_token']);
+} else {
+// getting short-lived access token
+$_SESSION['facebook_access_token'] = (string) $accessToken;
+// OAuth 2.0 client handler
+$oAuth2Client = $fb->getOAuth2Client();
+// Exchanges a short-lived access token for a long-lived one
+$longLivedAccessToken = $oAuth2Client->getLongLivedAccessToken($_SESSION['facebook_access_token']);
+$_SESSION['facebook_access_token'] = (string) $longLivedAccessToken;
+// setting default access token to be used in script
+$fb->setDefaultAccessToken($_SESSION['facebook_access_token']);
+}
+// redirect the user to the profile page if it has "code" GET variable
+if (isset($_GET['code'])) {
+header('Location: profile.php');
+}
+// getting basic info about user
+try {
+$profile_request = $fb->get('/me?fields=name,first_name,last_name,email');
+$requestPicture = $fb->get('/me/picture?redirect=false&height=200'); //getting user picture
+$picture = $requestPicture->getGraphUser();
+$profile = $profile_request->getGraphUser();
+$fbid = $profile->getProperty('id');           // To Get Facebook ID
+$fbfullname = $profile->getProperty('name');   // To Get Facebook full name
+$fbemail = $profile->getProperty('email');    //  To Get Facebook email
+$fbpic = "<img src='".$picture['url']."' class='img-rounded'/>";
+# save the user nformation in session variable
+$_SESSION['fb_id'] = $fbid.'</br>';
+$_SESSION['fb_name'] = $fbfullname.'</br>';
+$_SESSION['fb_email'] = $fbemail.'</br>';
+$_SESSION['fb_pic'] = $fbpic.'</br>';
+} catch(Facebook\Exceptions\FacebookResponseException $e) {
+// When Graph returns an error
+echo 'Graph returned an error: ' . $e->getMessage();
+session_destroy();
+// redirecting user back to app login page
+header("Location: ./");
+exit;
+} catch(Facebook\Exceptions\FacebookSDKException $e) {
+// When validation fails or other local issues
+echo 'Facebook SDK returned an error: ' . $e->getMessage();
+exit;
+}
+} else {
+// replace  website URL same as added in the developers.Facebook.com/apps e.g. if you used http instead of https and used            
+$loginUrl = $helper->getLoginUrl('http://localhost:3000/', $permissions);
+echo '<a href="' . $loginUrl . '">Log in with Facebook!</a>';
+}
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Y Registro - Kevin López</title>
-    <link rel="stylesheet" href="assets/css/estilos.css">
-</head>
-<body>
-
-    <main>
-        <div class="contenedor__todo">
-            <div class="caja__trasera">
-                <div class="caja__trasera-login">
-                    <h3>¿Ya tienes una cuenta?</h3>
-                    <p>Inicia sesión para entrar en la página</p>
-                    <button id="btn__iniciar-sesion">Iniciar sesión</button>
-                </div>
-                <div class="caja__trasera-register">
-                    <h3>¿Aún no tienes una cuenta?</h3>
-                    <p>Registrate para que puedas iniciar sesión</p>
-                    <button id="btn__registrarse">Registrarse</button>
-                </div>
-            </div>
-
-            <div class="contenedor__login-register">
-                <form action="php/login_usuario_be.php" method ="POST" 
-                class="formulario__login">
-                    <h2>Iniciar sesión</h2>
-                    <input type="text" placeholder="Correo electronico" name="correo">
-                    <input type="password" placeholder="contraseña" name="contrasena">
-                    <button>Entrar</button>
-
-                    
-                </form>
-                <form action="php/registro_usuario_be.php" method="POST" class="formulario__register">
-                    <h2>Registrarse</h2>
-                    <input type="text" placeholder="Nombre Completos" name = "nombre_completo">
-                    <input type="text" placeholder="Correo electronico" name = "correo">
-                    <input type="text" placeholder="Usuario" name = "usuario">
-                    <input type="password" placeholder="contraseña" name = "contrasena">
-                    <button>Registrarse</button>
-                </form>
-            </div>
-        </div>
-    </main>
-    <script src ="assets/js/script.js"></script>
-</body>
-</html>
