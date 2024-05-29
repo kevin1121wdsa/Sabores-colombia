@@ -118,7 +118,7 @@
   
   <div class="footerContainer">
     <div class="socialIcons">
-      <a href="http://localhost:3000/index.php"><i class="fa-brands fa-facebook"></i></a>
+      <a href="http://localhost:3000"><i class="fa-brands fa-facebook"></i></a>
       <a href=""><i class="fa-brands fa-twitter"></i></a>
       <a href="https://accounts.google.com/o/oauth2/v2/auth/oauthchooseaccount?response_type=code&access_type=online&client_id=947201008132-oovpai6utqaa2im8a5v4h7oq36t1t40b.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Flogin-register%2Flogin-register%2FSABORES%2520COLOMBIA%2FpantallaInicio.php&state&scope=email%20profile&approval_prompt=auto&service=lso&o2v=2&ddm=0&flowName=GeneralOAuthFlow"><i class="fa-brands fa-google-plus"></i></a>
       
